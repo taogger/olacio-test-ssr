@@ -1,2 +1,8 @@
-# olacio-test-ssr
-olacio-test-ssr
+
+### 运行
+
+```bash
+npm install
+npm run start
+```
+
