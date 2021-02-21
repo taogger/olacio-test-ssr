@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 import course from './pages/course/index.vue'
 import home from './pages/home.vue'
+import courseList from './components/courseList.vue'
 import abroad from './pages/abroad/index.vue'
 import teacher from './pages/teacher/index.vue'
 
@@ -11,8 +12,8 @@ export default new Router({
     mode: 'history',
     routes: [{
             path: '/',
-            name: '首页',
-            component: home,
+            name: 'courseList',
+            component: courseList,
         },
         {
             path: '/home',

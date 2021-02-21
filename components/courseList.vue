@@ -1,22 +1,34 @@
 <template>
-    <section class="course-wrap">
-        <div class="section-title">
-            <h2>今日试听课程</h2>
-            <span @click="moreCourse">更多课程</span>
-        </div>
-        <dl v-for="(item,idex) in courseList">
-            <dt><img :src="item.teacher.coverImageUrl" alt=""></dt>
-            <dd>
-                <h3>{{item.sessionName}}</h3>
-                <p><span>{{item.teacher.nickName}}</span>| <span>班级人数{{item.tfClass.maxStudentNum}}人</span></p>
-                <p class="timer">下午12:30-17:00</p>
-                <p class="des">限{{item.maxListenerNum}}人试听，已有{{item.userBookingNum}}人预约试听</p>
-                <span class="to-class">去上课</span>
-            </dd>
-        </dl>
-    </section>
+    <div>
+        <navMenu />
+        <section class="course-wrap">
+            <div class="section-title">
+                <h2>今日试听课程</h2>
+                <span @click="moreCourse">更多课程</span>
+            </div>
+            <dl v-for="(item,idex) in courseList">
+                <dt><img :src="item.teacher.coverImageUrl" alt=""></dt>
+                <dd>
+                    <h3>{{item.sessionName}}</h3>
+                    <p><span>{{item.teacher.nickName}}</span>| <span>班级人数{{item.tfClass.maxStudentNum}}人</span></p>
+                    <p class="timer">下午12:30-17:00</p>
+                    <p class="des">限{{item.maxListenerNum}}人试听，已有{{item.userBookingNum}}人预约试听</p>
+                    <span class="to-class">去上课</span>
+                </dd>
+            </dl>
+        </section>
+    </div>
 </template>
 <style>
+ul,
+li,
+body,
+html {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
 .course-wrap {
     padding: 10px;
     border-top: 10px solid #ddd;
@@ -64,9 +76,10 @@ dd {
 }
 </style>
 <script>
+import nav from './nav.vue'
 export default {
     asyncData: function({ store }) {
-      console.log(555)
+        console.log(555)
         return store.dispatch('GET_LIST') // 返回promise
     },
     created() {
@@ -76,6 +89,9 @@ export default {
         courseList() {
             return this.$store.state.list
         }
+    },
+    components: {
+        navMenu: nav,
     },
     methods: {
         moreCourse() {
